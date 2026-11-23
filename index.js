@@ -10,52 +10,6 @@ function updateSplit() {
 split.addEventListener("input", updateSplit);
 updateSplit();
 
-const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-const loopToggle = document.querySelector("[data-loop-toggle]");
-const loopVideos = [...document.querySelectorAll("[data-loop]")];
-const visibleVideos = new Set();
-let loopsEnabled = !motionPreference.matches;
-
-function updateLoops() {
-  loopToggle.textContent = loopsEnabled ? "Pause loops" : "Play loops";
-
-  for (const video of loopVideos) {
-    if (loopsEnabled && !document.hidden && visibleVideos.has(video)) {
-      video.play().catch(() => {
-        // Manual controls remain available when autoplay is blocked.
-        if (loopsEnabled) video.controls = true;
-      });
-    } else {
-      video.pause();
-    }
-  }
-}
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      if (entry.isIntersecting) visibleVideos.add(entry.target);
-      else visibleVideos.delete(entry.target);
-    }
-    updateLoops();
-  }, { threshold: 0.25 });
-  loopVideos.forEach(video => observer.observe(video));
-} else {
-  loopVideos.forEach(video => visibleVideos.add(video));
-}
-
-loopToggle.hidden = false;
-loopToggle.addEventListener("click", () => {
-  loopsEnabled = !loopsEnabled;
-  updateLoops();
-});
-motionPreference.addEventListener("change", () => {
-  loopsEnabled = !motionPreference.matches;
-  updateLoops();
-});
-document.addEventListener("visibilitychange", updateLoops);
-updateLoops();
-
 const comparisonOptions = document.querySelector("[data-comparison-options]");
 const comparisonPlayer = document.querySelector("[data-comparison-player]");
 const comparisonSource = comparisonPlayer.querySelector("source");

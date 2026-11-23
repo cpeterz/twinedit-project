@@ -14,8 +14,8 @@
   <meta property="og:description" content="Explore reference-guided object replacement across robot camera views.">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="stylesheet" href="bulma.min.css">
-  <link rel="stylesheet" href="index.css">
-  <script src="index.js" defer></script>
+  <link rel="stylesheet" href="index.css?v=2">
+  <script src="index.js?v=2" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -24,7 +24,6 @@
       <a class="brand" href="#top" aria-label="TwinEdit home"><span class="brand-mark" aria-hidden="true"></span>TwinEdit</a>
       <nav aria-label="Page sections">
         <a href="#preview">Preview</a>
-        <a href="#simulation">Simulation</a>
         <a href="#results">Results</a>
         <a href="#comparisons">Comparisons</a>
       </nav>
@@ -34,14 +33,17 @@
   <main id="main">
     <section class="hero intro" aria-labelledby="title">
       <div class="hero-body">
-        <div class="container page-width intro-grid">
+        <div class="container page-width">
           <div class="intro-copy">
-            <h1 id="title">TwinEdit</h1>
-            <p class="project-title">Consistent Object Replacement for Multi-View Robot Video Editing</p>
-            <p class="intro-description">Replace objects across robot camera views while preserving the original bimanual motion.</p>
-            <div class="intro-actions">
-              <a class="page-button primary" href="#preview"><span class="play-icon" aria-hidden="true"></span>Watch preview</a>
-              <a class="page-button secondary" href="#results">Explore results</a>
+            <h1 id="title">
+              TwinEdit
+              <span class="project-title">Consistent Object Replacement for Multi-View Robot Video Editing</span>
+            </h1>
+            <p class="author-line">Author names</p>
+            <p class="affiliation-line">Affiliations</p>
+            <div class="publication-links" role="group" aria-label="Publication links">
+              <button type="button" disabled>Paper</button>
+              <button type="button" disabled>Code</button>
             </div>
           </div>
 
@@ -59,6 +61,7 @@
               <span class="caption-hint">Drag to compare</span>
             </figcaption>
           </figure>
+          <p class="intro-description">Replace objects across robot camera views while preserving the original bimanual motion.</p>
         </div>
       </div>
     </section>
@@ -75,35 +78,6 @@
             <a href="twinedit-preview.mp4">Download the project preview</a>
           </video>
         </div>
-      </div>
-    </section>
-
-    <section class="section content-band simulation-band" id="simulation" aria-labelledby="simulation-title">
-      <div class="container page-width">
-        <div class="section-heading heading-with-control">
-          <div>
-            <h2 id="simulation-title">Simulation results</h2>
-            <p>Two looping examples from three synchronized camera views.</p>
-          </div>
-          <button class="page-button secondary loop-toggle" type="button" data-loop-toggle hidden>Pause loops</button>
-        </div>
-        <div class="simulation-grid">
-          <figure class="simulation-example">
-            <figcaption>Swirl ball</figcaption>
-            <div class="view-labels" aria-hidden="true"><span>Left wrist</span><span>Main view</span><span>Right wrist</span></div>
-            <video class="multi-view" muted loop playsinline preload="none" width="1280" height="640" poster="sim-swirl.webp" data-loop aria-label="Swirl ball edit with original views above and TwinEdit views below">
-              <source src="sim-swirl.mp4" type="video/mp4">
-            </video>
-          </figure>
-          <figure class="simulation-example">
-            <figcaption>Waffle</figcaption>
-            <div class="view-labels" aria-hidden="true"><span>Left wrist</span><span>Main view</span><span>Right wrist</span></div>
-            <video class="multi-view" muted loop playsinline preload="none" width="1280" height="640" poster="sim-waffle.webp" data-loop aria-label="Waffle edit with original views above and TwinEdit views below">
-              <source src="sim-waffle.mp4" type="video/mp4">
-            </video>
-          </figure>
-        </div>
-        <p class="view-key"><span>Top row <strong>Original</strong></span><span>Bottom row <strong>TwinEdit</strong></span></p>
       </div>
     </section>
 
