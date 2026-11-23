@@ -1,15 +1,3 @@
-const comparison = document.querySelector("[data-slider]");
-const split = comparison.querySelector("input");
-
-function updateSplit() {
-  const original = Number(split.value);
-  comparison.style.setProperty("--split", original + "%");
-  split.setAttribute("aria-valuetext", original + "% original, " + (100 - original) + "% TwinEdit");
-}
-
-split.addEventListener("input", updateSplit);
-updateSplit();
-
 const comparisonOptions = document.querySelector("[data-comparison-options]");
 const comparisonPlayer = document.querySelector("[data-comparison-player]");
 const comparisonSource = comparisonPlayer.querySelector("source");
