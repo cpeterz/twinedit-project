@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TwinEdit · Multi-View Robot Video Editing</title>
+  <meta name="description" content="TwinEdit: Consistent Object Replacement for Multi-View Robot Video Editing. Watch the project preview and explore synchronized multi-view results.">
+  <meta name="theme-color" content="#f7f7fb">
+  <link rel="canonical" href="https://cpeterz.github.io/twinedit-project/">
+  <meta property="og:url" content="https://cpeterz.github.io/twinedit-project/">
+  <meta property="og:image" content="https://cpeterz.github.io/twinedit-project/preview-poster.webp">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TwinEdit · Multi-View Robot Video Editing">
+  <meta property="og:description" content="Explore reference-guided object replacement across robot camera views.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="stylesheet" href="bulma.min.css">
+  <link rel="stylesheet" href="index.css">
+  <script src="index.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="container page-width masthead-inner">
+      <a class="brand" href="#top" aria-label="TwinEdit home"><span class="brand-mark" aria-hidden="true"></span>TwinEdit</a>
+      <nav aria-label="Page sections">
+        <a href="#preview">Preview</a>
+        <a href="#simulation">Simulation</a>
+        <a href="#results">Results</a>
+        <a href="#comparisons">Comparisons</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero intro" aria-labelledby="title">
+      <div class="hero-body">
+        <div class="container page-width intro-grid">
+          <div class="intro-copy">
+            <h1 id="title">TwinEdit</h1>
+            <p class="project-title">Consistent Object Replacement for Multi-View Robot Video Editing</p>
+            <p class="intro-description">Replace objects across robot camera views while preserving the original bimanual motion.</p>
+            <div class="intro-actions">
+              <a class="page-button primary" href="#preview"><span class="play-icon" aria-hidden="true"></span>Watch preview</a>
+              <a class="page-button secondary" href="#results">Explore results</a>
+            </div>
+          </div>
+
+          <figure class="hero-figure">
+            <div class="image-comparison" data-slider>
+              <img src="hero-edited.webp" alt="Edited left wrist camera frame showing a white baseball cap" width="960" height="720" fetchpriority="high">
+              <img class="original-image" src="hero-original.webp" alt="Matching original frame showing a yellow cylinder" width="960" height="720" fetchpriority="high">
+              <span class="image-tag original-tag" aria-hidden="true">Original</span>
+              <span class="image-tag edited-tag" aria-hidden="true">TwinEdit</span>
+              <div class="divider" aria-hidden="true"><span class="grip"><i></i><i></i></span></div>
+              <input class="comparison-range" type="range" min="0" max="100" value="50" aria-label="Original and TwinEdit image split" aria-describedby="slider-caption">
+            </div>
+            <figcaption id="slider-caption">
+              <span><strong>Cylinder to baseball cap</strong><span class="caption-camera">Left wrist camera</span></span>
+              <span class="caption-hint">Drag to compare</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section content-band preview-band" id="preview" aria-labelledby="preview-title">
+      <div class="container page-width">
+        <div class="section-heading">
+          <h2 id="preview-title">Project preview</h2>
+          <p>A walkthrough of the method, data generation and multi-view edits.</p>
+        </div>
+        <div class="main-player">
+          <video controls playsinline preload="none" width="1920" height="900" poster="preview-poster.webp" aria-label="Full TwinEdit project preview">
+            <source src="twinedit-preview.mp4" type="video/mp4">
+            <a href="twinedit-preview.mp4">Download the project preview</a>
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section class="section content-band simulation-band" id="simulation" aria-labelledby="simulation-title">
+      <div class="container page-width">
+        <div class="section-heading heading-with-control">
+          <div>
+            <h2 id="simulation-title">Simulation results</h2>
+            <p>Two looping examples from three synchronized camera views.</p>
+          </div>
+          <button class="page-button secondary loop-toggle" type="button" data-loop-toggle hidden>Pause loops</button>
+        </div>
+        <div class="simulation-grid">
+          <figure class="simulation-example">
+            <figcaption>Swirl ball</figcaption>
+            <div class="view-labels" aria-hidden="true"><span>Left wrist</span><span>Main view</span><span>Right wrist</span></div>
+            <video class="multi-view" muted loop playsinline preload="none" width="1280" height="640" poster="sim-swirl.webp" data-loop aria-label="Swirl ball edit with original views above and TwinEdit views below">
+              <source src="sim-swirl.mp4" type="video/mp4">
+            </video>
+          </figure>
+          <figure class="simulation-example">
+            <figcaption>Waffle</figcaption>
+            <div class="view-labels" aria-hidden="true"><span>Left wrist</span><span>Main view</span><span>Right wrist</span></div>
+            <video class="multi-view" muted loop playsinline preload="none" width="1280" height="640" poster="sim-waffle.webp" data-loop aria-label="Waffle edit with original views above and TwinEdit views below">
+              <source src="sim-waffle.mp4" type="video/mp4">
+            </video>
+          </figure>
+        </div>
+        <p class="view-key"><span>Top row <strong>Original</strong></span><span>Bottom row <strong>TwinEdit</strong></span></p>
+      </div>
+    </section>
+
+    <section class="section content-band results-band" id="results" aria-labelledby="results-title">
+      <div class="container page-width">
+        <div class="section-heading">
+          <h2 id="results-title">Qualitative results</h2>
+          <p>Each clip shows the original sequence above the edited sequence, with left wrist, main and right wrist views in order.</p>
+        </div>
+        <div class="result-grid">
+          <figure class="result-card">
+            <video controls loop muted playsinline preload="none" width="1120" height="560" poster="result-cap.webp" aria-label="Baseball cap result">
+              <source src="result-cap.mp4" type="video/mp4">
+            </video>
+            <figcaption>Baseball cap</figcaption>
+          </figure>
+          <figure class="result-card">
+            <video controls loop muted playsinline preload="none" width="1120" height="560" poster="result-rings.webp" aria-label="Stacking rings result">
+              <source src="result-rings.mp4" type="video/mp4">
+            </video>
+            <figcaption>Stacking rings</figcaption>
+          </figure>
+          <figure class="result-card">
+            <video controls loop muted playsinline preload="none" width="1120" height="560" poster="result-ladybug.webp" aria-label="Ladybug result">
+              <source src="result-ladybug.mp4" type="video/mp4">
+            </video>
+            <figcaption>Ladybug</figcaption>
+          </figure>
+          <figure class="result-card">
+            <video controls loop muted playsinline preload="none" width="1120" height="560" poster="result-doughnut.webp" aria-label="Doughnut result">
+              <source src="result-doughnut.mp4" type="video/mp4">
+            </video>
+            <figcaption>Doughnut</figcaption>
+          </figure>
+          <figure class="result-card">
+            <video controls loop muted playsinline preload="none" width="1120" height="560" poster="result-tape.webp" aria-label="Tape roll result">
+              <source src="result-tape.mp4" type="video/mp4">
+            </video>
+            <figcaption>Tape roll</figcaption>
+          </figure>
+          <figure class="result-card">
+            <video controls loop muted playsinline preload="none" width="1120" height="560" poster="result-crayons.webp" aria-label="Crayon box result">
+              <source src="result-crayons.mp4" type="video/mp4">
+            </video>
+            <figcaption>Crayon box</figcaption>
+          </figure>
+          <figure class="result-card">
+            <video controls loop muted playsinline preload="none" width="1120" height="560" poster="result-owl.webp" aria-label="Owl figurine result">
+              <source src="result-owl.mp4" type="video/mp4">
+            </video>
+            <figcaption>Owl figurine</figcaption>
+          </figure>
+          <figure class="result-card">
+            <video controls loop muted playsinline preload="none" width="1120" height="560" poster="result-brick.webp" aria-label="Toy brick result">
+              <source src="result-brick.mp4" type="video/mp4">
+            </video>
+            <figcaption>Toy brick</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section content-band comparison-band" id="comparisons" aria-labelledby="comparisons-title">
+      <div class="container page-width">
+        <div class="section-heading">
+          <h2 id="comparisons-title">Method comparisons</h2>
+          <p>Select a replacement task to compare TwinEdit and the baselines from the project preview.</p>
+        </div>
+        <div class="comparison-card">
+          <div class="comparison-options" role="group" aria-label="Replacement task" hidden data-comparison-options>
+            <button type="button" aria-pressed="true" data-example="correction">Correction tape</button>
+            <button type="button" aria-pressed="false" data-example="potato">Sweet potato</button>
+            <button type="button" aria-pressed="false" data-example="eraser">Eraser</button>
+            <button type="button" aria-pressed="false" data-example="cap">Baseball cap</button>
+            <button type="button" aria-pressed="false" data-example="usb">USB drive</button>
+          </div>
+          <figure>
+            <div class="comparison-player">
+              <video controls loop muted playsinline preload="none" width="1920" height="900" poster="compare-correction.webp" aria-label="Method comparison" aria-describedby="comparison-caption" data-comparison-player>
+                <source src="compare-correction.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption id="comparison-caption" aria-live="polite">Replace the toy block with a correction tape dispenser.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer page-footer">
+    <div class="container page-width footer-inner">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>TwinEdit</a>
+      <div class="credits">
+        <p>Page adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a> and <a href="https://nerfies.github.io/">Nerfies</a> under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+        <p>Preview music: <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700030">“Tech Live” by Kevin MacLeod</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>), edited in the source preview.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+
