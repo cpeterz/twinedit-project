@@ -1,6 +1,7 @@
 const demo = document.querySelector("[data-teaser]");
 const media = demo.querySelector("[data-teaser-video]");
 const controls = demo.querySelector("[data-teaser-controls]");
+const scene = demo.querySelector(".teaser-scene");
 const choices = demo.querySelector("[data-teaser-options]");
 const buttons = [...choices.querySelectorAll("[data-teaser-object]")];
 const toggle = demo.querySelector("[data-teaser-toggle]");
@@ -40,6 +41,7 @@ function paintFrame() {
   for (const { context, x, y } of feeds) {
     context.drawImage(frame, x, y, width, height, 0, 0, width, height);
   }
+  if (previousFrame < 0) scene.classList.add("is-rendering");
   previousFrame = media.currentTime;
 }
 
@@ -52,7 +54,7 @@ function animate() {
 function loadSelection() {
   status.hidden = true;
   media.preload = "auto";
-  media.src = `teaser-${selected.dataset.teaserObject}.mp4`;
+  media.src = `teaser-${selected.dataset.teaserObject}.mp4?v=2`;
   media.load();
 }
 
@@ -82,6 +84,7 @@ choices.addEventListener("click", event => {
 
   const option = buttons.indexOf(selected);
   const finalRow = buttons.length * 2 - 1;
+  demo.style.setProperty("--teaser-trace", selected.dataset.teaserColor);
   demo.style.setProperty("--teaser-reference-position", `${100 * option / (buttons.length - 1)}%`);
   demo.style.setProperty("--teaser-before-position", `${100 * (2 * option) / finalRow}%`);
   demo.style.setProperty("--teaser-after-position", `${100 * (2 * option + 1) / finalRow}%`);
@@ -89,6 +92,7 @@ choices.addEventListener("click", event => {
   referenceName.textContent = selected.textContent;
 
   previousFrame = -1;
+  scene.classList.remove("is-rendering");
   for (const { context } of feeds) context.clearRect(0, 0, width, height);
   if (media.hasAttribute("src")) loadSelection();
   refreshPlayback();
