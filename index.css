@@ -90,12 +90,8 @@ video { display: block; width: 100%; height: auto; background: #22202a; }
 .teaser-feed:is([data-teaser-tile="5"], [data-teaser-tile="6"], [data-teaser-tile="7"]) { --tile-y: var(--teaser-after-position); }
 .teaser-scene { background-color: transparent; background-image: url("teaser-scene.webp"); background-position: center; background-size: contain; border-radius: 0; }
 .teaser-scene.is-rendering { background-image: none; mask: url("teaser-scene.webp") center / 100% 100% no-repeat; }
-.teaser-object-image { aspect-ratio: 1; background-color: transparent; background-image: url("teaser-objects.webp"); background-position: var(--teaser-reference-position) center; background-size: 600% 100%; mix-blend-mode: multiply; }
-.teaser-connector { position: relative; align-self: center; justify-self: center; width: 100%; height: 1.7rem; color: var(--teaser-trace); }
-.teaser-connector i, .teaser-connector::after { position: absolute; }
-.teaser-connector i:first-child { top: calc(50% - 7px); left: 0; width: 52%; height: 8px; border-top: 2px solid; border-right: 2px solid; border-top-right-radius: .5rem; }
-.teaser-connector i:nth-child(2) { top: calc(50% - 1px); left: calc(52% - 2px); right: .35rem; height: 8px; border-bottom: 2px solid; border-left: 2px solid; border-bottom-left-radius: .5rem; }
-.teaser-connector::after { content: ""; top: calc(50% + 6px); right: 0; transform: translateY(-50%); border-block: 4px solid transparent; border-left: 7px solid; }
+.teaser-object-image { aspect-ratio: 1; background-color: transparent; background-image: url("teaser-objects.webp"); background-position: var(--teaser-reference-position) center; background-size: 600% 100%; filter: brightness(1.045); mix-blend-mode: multiply; }
+.teaser-connector { align-self: center; justify-self: center; width: 100%; aspect-ratio: 20 / 7; background-color: var(--teaser-trace); mask: url("teaser-connector.png") center / contain no-repeat; }
 .teaser-status { margin-top: .65rem; color: var(--muted); font-size: .875rem; }
 .teaser-media { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 
